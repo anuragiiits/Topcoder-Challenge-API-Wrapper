@@ -87,6 +87,53 @@ module.exports = (allConfig) => {
 
   // Export functions
   return {
-    // -- review type APIs --
+    // -- Technology APIs --
+
+    // Get technologies
+    getTechnologies: (jwt) => {
+      return require('./src/TechnologiesApi').getTechnologies(config, jwt)
+    },
+    // Create technology
+    createTechnology: (reqBody, jwt) => {
+      return require('./src/TechnologiesApi').createTechnology(config, reqBody, jwt)
+    },
+    // Partially update technology
+    patchTechnology: (id, reqBody, jwt) => {
+      return require('./src/TechnologiesApi').patchTechnology(config, id, reqBody, jwt)
+    },
+    // Delete technology
+    deleteTechnology: (id, jwt) => {
+      return require('./src/TechnologiesApi').deleteTechnology(config, id, jwt)
+    },
+
+    // -- Platform APIs --
+
+    // Get platforms
+    getPlatforms: (jwt) => {
+      return require('./src/PlatformsApi').getPlatforms(config, jwt)
+    },
+    // Create technology
+    createPlatform: (reqBody, jwt) => {
+      return require('./src/PlatformsApi').createPlatform(config, reqBody, jwt)
+    },
+    // Partially update technology
+    patchPlatform: (id, reqBody, jwt) => {
+      return require('./src/PlatformsApi').patchPlatform(config, id, reqBody, jwt)
+    },
+    // Delete technology
+    deletePlatform: (id, jwt) => {
+      return require('./src/PlatformsApi').deletePlatform(config, id, jwt)
+    },
+
+    // -- Challenge Related APIs --
+
+    // Get challenge metadata
+    getChallengeMetadata: (jwt) => {
+      return require('./src/ChallengeRelatedApi').getChallengeMetadata(config, jwt)
+    },
+    // Get challenge types
+    getChallengeTypes: (jwt) => {
+      return require('./src/ChallengeRelatedApi').getChallengeTypes(config, jwt)
+    }
   }
 }

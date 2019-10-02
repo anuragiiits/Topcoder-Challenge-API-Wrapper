@@ -10,7 +10,7 @@ const helper = require('./common/helper')
  * @returns {Promise} all the technologies
  */
 const getPlatforms = (config, jwt = null) => {
-    return helper.reqToV4API(config, jwt, 'GET', `${config.CHALLENGE_API_URL}/platforms`)
+  return helper.reqToV4API(config, jwt, 'GET', `${config.CHALLENGE_API_URL}/platforms`)
 }
 
 /**
@@ -21,7 +21,7 @@ const getPlatforms = (config, jwt = null) => {
  * @returns {Promise} created Platform
  */
 const createPlatform = (config, reqBody, jwt = null) => {
-    return helper.reqToV4API(config, jwt, 'POST', `${config.CHALLENGE_API_URL}/platforms`, reqBody)
+  return helper.reqToV4API(config, jwt, 'POST', `${config.CHALLENGE_API_URL}/platforms`, reqBody)
 }
 
 /**
@@ -32,7 +32,7 @@ const createPlatform = (config, reqBody, jwt = null) => {
  * @returns {Promise} updated platform
  */
 const patchPlatform = (config, id, reqBody, jwt = null) => {
-    return helper.reqToV4API(config, jwt, 'PATCH', `${config.CHALLENGE_API_URL}/platforms/${id}`, reqBody)
+  return helper.reqToV4API(config, jwt, 'PATCH', `${config.CHALLENGE_API_URL}/platforms/${id}`, reqBody)
 }
 
 /**
@@ -43,12 +43,12 @@ const patchPlatform = (config, id, reqBody, jwt = null) => {
  * @returns {Promise}
  */
 const deletePlatform = (config, id, jwt = null) => {
-    return helper.reqToV4API(config, jwt, 'DELETE', `${config.CHALLENGE_API_URL}/platforms/${id}`)
+  return helper.reqToV4API(config, jwt, 'DELETE', `${config.CHALLENGE_API_URL}/platforms/${id}`)
 }
 
 module.exports = {
-    getPlatforms,
-    createPlatform,
-    patchPlatform,
-    deletePlatform
+  getPlatforms,
+  createPlatform,
+  patchPlatform,
+  deletePlatform
 }

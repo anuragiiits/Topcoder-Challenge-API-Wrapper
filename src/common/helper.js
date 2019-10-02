@@ -25,8 +25,7 @@ const getM2Mtoken = async (config) => {
  * @returns {String} JWT token that can be used in fetching TC resources.
  */
 const tokenFromCredentials = async (config) => {
-  let v2Token
-  v2Token = await request
+  const v2Token = await request
     .post(config.TC_AUTHN_URL)
     .send({
       username: config.USERNAME,
@@ -55,11 +54,11 @@ const _tokenV3FromV2 = async (config, v2Token) => {
   return request
     .post(config.TC_AUTHZ_URL)
     .set('cache-control', constants.cacheControl.noCache)
-    .set('authorization', `Bearer ${v2Token['id_token']}`)
+    .set('authorization', `Bearer ${v2Token.id_token}`)
     .set('content-type', constants.contentType.json)
     .send({
       param: {
-        externalToken: v2Token['id_token'],
+        externalToken: v2Token.id_token,
         refreshToken: _.get(v2Token, 'refresh_token', '')
       }
     })
@@ -124,78 +123,7 @@ const reqToV4API = async (config, jwt, reqType, path, reqBody) => {
   }
 }
 
-// /**
-//  * Function to send request to V5 API with file
-//  * @param {Object} config Configuration object
-//  * @param {String} jwt The JWT
-//  * @param (String) path Complete path of the API URL
-//  * @param {Object} formData multiple part form data
-//  * @param {String} the file field name in formData
-//  * @returns {Promise}
-//  */
-// const reqToV4APIWithFile = async (config, jwt, path, formData, fileFieldName) => {
-//   const token = await getToken(config, jwt)
-//   if (formData[fileFieldName] && formData[fileFieldName].data && formData[fileFieldName].name) {
-//     return request
-//       .post(path)
-//       .set('Authorization', `Bearer ${token}`)
-//       .field(_.omit(formData, fileFieldName))
-//       .attach(fileFieldName, formData[fileFieldName].data, formData[fileFieldName].name)
-//   } else {
-//     return request
-//       .post(path)
-//       .set('Authorization', `Bearer ${token}`)
-//       .field(_.omit(formData, fileFieldName))
-//   }
-// }
-
-// /**
-//  * Function to download file using V4 API
-//  * @param {Object} config Configuration object
-//  * @param {String} jwt The JWT
-//  * @param (String) path Complete path of the API URL
-//  * @returns {Promise}
-//  */
-// const reqToV5APIDownload = async (config, jwt, path) => {
-//   const token = await getToken(config, jwt)
-//   return request
-//     .get(path)
-//     .set('Authorization', `Bearer ${token}`)
-//     .buffer(true)
-//     .parse(function (res, callback) {
-//       res.data = ''
-//       res.setEncoding('binary')
-//       res.on('data', function (chunk) {
-//         res.data += chunk
-//       })
-//       res.on('end', function () {
-//         if (/application\/json/.test(res.headers['content-type'])) {
-//           callback(null, JSON.parse(res.data))
-//         } else {
-//           callback(null, Buffer.from(res.data, 'binary'))
-//         }
-//       })
-//     })
-// }
-
-/*
- * Function to build URL with query parameters
- * @param {String} url Bus API URL
- * @param {Object} params Query parameters
- * @returns {String} URL with query parameters
- */
-const buildURLwithParams = (url, params) => {
-  let queryParams = '?'
-  if (params) {
-    for (let key in params) {
-      queryParams += `${key}=${params[key]}&`
-    }
-  }
-  return url + queryParams
-}
-
 module.exports = {
   reqToV4API,
-  buildURLwithParams,
   getToken
 }

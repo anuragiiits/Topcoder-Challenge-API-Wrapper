@@ -4,13 +4,17 @@
   "description": "Wrapper for Topcoder Challenge API",
   "main": "index.js",
   "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Anurag Gupta",
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^16.1.4",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "superagent": "^5.1.0",
+    "tc-core-library-js": "appirio-tech/tc-core-library-js.git"
   },
   "devDependencies": {
     "standard": "^14.3.1"

@@ -10,7 +10,7 @@ const helper = require('./common/helper')
  * @returns {Promise} all the technologies
  */
 const getTechnologies = (config, jwt = null) => {
-    return helper.reqToV4API(config, jwt, 'GET', `${config.CHALLENGE_API_URL}/technologies`)
+  return helper.reqToV4API(config, jwt, 'GET', `${config.CHALLENGE_API_URL}/technologies`)
 }
 
 /**
@@ -21,7 +21,7 @@ const getTechnologies = (config, jwt = null) => {
  * @returns {Promise} created Technology
  */
 const createTechnology = (config, reqBody, jwt = null) => {
-    return helper.reqToV4API(config, jwt, 'POST', `${config.CHALLENGE_API_URL}/technologies`, reqBody)
+  return helper.reqToV4API(config, jwt, 'POST', `${config.CHALLENGE_API_URL}/technologies`, reqBody)
 }
 
 /**
@@ -35,7 +35,7 @@ const createTechnology = (config, reqBody, jwt = null) => {
  * @returns {Promise} updated technology
  */
 const patchTechnology = (config, id, reqBody, jwt = null) => {
-    return helper.reqToV4API(config, jwt, 'PATCH', `${config.CHALLENGE_API_URL}/technologies/${id}`, reqBody)
+  return helper.reqToV4API(config, jwt, 'PATCH', `${config.CHALLENGE_API_URL}/technologies/${id}`, reqBody)
 }
 
 /**
@@ -46,12 +46,12 @@ const patchTechnology = (config, id, reqBody, jwt = null) => {
  * @returns {Promise}
  */
 const deleteTechnology = (config, id, jwt = null) => {
-    return helper.reqToV4API(config, jwt, 'DELETE', `${config.CHALLENGE_API_URL}/technologies/${id}`)
+  return helper.reqToV4API(config, jwt, 'DELETE', `${config.CHALLENGE_API_URL}/technologies/${id}`)
 }
 
 module.exports = {
-    getTechnologies,
-    createTechnology,
-    patchTechnology,
-    deleteTechnology
+  getTechnologies,
+  createTechnology,
+  patchTechnology,
+  deleteTechnology
 }
