@@ -80,7 +80,7 @@ module.exports = (allConfig) => {
   }
 
   // Validate the arguments
-  const result = joi.validate(config, schema)
+  const result = schema.validate(config)
   if (result.error) {
     throw new Error(`[${schemaType}] ${result.error.details[0].message}`)
   }
