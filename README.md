@@ -87,52 +87,24 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getTechnologies**](docs/TechnologiesApi.md#getTechnologies) | **GET** /technologies | Get all the technologies.
 [**createTechnology**](docs/TechnologiesApi.md#createTechnology) | **POST** /technologies | Create a technology.
-[**patchTechnology**](docs/TechnologiesApi.md#patchTechnology) | **PATCH** /technologies/{TechnologyId} | Partially update technology.
-[**deleteTechnology**](docs/TechnologiesApi.md#deleteTechnology) | **DELETE** /technologies/{TechnologyId} | Delete the technology.
+[**patchTechnology**](docs/TechnologiesApi.md#patchTechnology) | **PATCH** /technologies/{technologyId} | Partially update technology.
+[**deleteTechnology**](docs/TechnologiesApi.md#deleteTechnology) | **DELETE** /technologies/{technologyId} | Delete the technology.
 
-### Reviews wrapper methods
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**searchReviews**](docs/ReviewsApi.md#searchReviews) | **GET** /reviews | Search reviews.
-[**headReviews**](docs/ReviewsApi.md#headReviews) | **HEAD** /reviews | Same to search reviews, but only response status and headers information return.
-[**createReview**](docs/ReviewsApi.md#createReview) | **POST** /reviews | Create a review.
-[**getReview**](docs/ReviewsApi.md#getReview) | **GET** /reviews/{reviewId} | Get the review.
-[**headReview**](docs/ReviewsApi.md#headReview) | **HEAD** /reviews/{reviewId} | Same to get review, but only response status and headers information return.
-[**updateReview**](docs/ReviewsApi.md#updateReview) | **PUT** /reviews/{reviewId} | Fully update review.
-[**patchReview**](docs/ReviewsApi.md#patchReview) | **PATCH** /reviews/{reviewId} | Partially update review.
-[**deleteReview**](docs/ReviewsApi.md#deleteReview) | **DELETE** /reviews/{reviewId} | Delete the review.
-
-### Review Summations wrapper methods
+### Platforms wrapper methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**searchReviewSummations**](docs/ReviewSummationsApi.md#searchReviewSummations) | **GET** /reviewSummations | Search review summations.
-[**headReviewSummations**](docs/ReviewSummationsApi.md#headReviewSummations) | **HEAD** /reviewSummations | Same to search review summations, but only response status and headers information return.
-[**createReviewSummation**](docs/ReviewSummationsApi.md#createReviewSummation) | **POST** /reviewSummations | Create a review summation.
-[**getReviewSummation**](docs/ReviewSummationsApi.md#getReviewSummation) | **GET** /reviewSummations/{reviewSummationId} | Get the review summation.
-[**headReviewSummation**](docs/ReviewSummationsApi.md#headReviewSummation) | **HEAD** /reviewSummations/{reviewSummationId} | Same to get review summation, but only response status and headers information return.
-[**updateReviewSummation**](docs/ReviewSummationsApi.md#updateReviewSummation) | **PUT** /reviewSummations/{reviewSummationId} | Fully update review summation.
-[**patchReviewSummation**](docs/ReviewSummationsApi.md#patchReviewSummation) | **PATCH** /reviewSummations/{reviewSummationId} | Partially update review summation.
-[**deleteReviewSummation**](docs/ReviewSummationsApi.md#deleteReviewSummation) | **DELETE** /reviewSummations/{reviewSummationId} | Delete the review summation.
+[**getPlatforms**](docs/PlatformsApi.md#getPlatforms) | **GET** /platforms | Get all the platforms.
+[**createPlatform**](docs/PlatformsApi.md#createPlatform) | **POST** /platforms | Create a platform.
+[**patchPlatform**](docs/PlatformsApi.md#patchPlatform) | **PATCH** /platforms/{platformId} | Partially update platform.
+[**deletePlatform**](docs/PlatformsApi.md#deletePlatform) | **DELETE** /platforms/{platformId} | Delete the platform.
 
-### Challenges wrapper methods
+### Challenge Related methods
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**searchSubmissions**](docs/SubmissionsApi.md#searchSubmissions) | **GET** /submissions | Search submissions.
-[**headSubmissions**](docs/SubmissionsApi.md#headSubmissions) | **HEAD** /submissions | Same to search submissions, but only response status and headers information return.
-[**createSubmission**](docs/SubmissionsApi.md#createSubmission) | **POST** /submissions | Create a submission.
-[**getSubmission**](docs/SubmissionsApi.md#getSubmission) | **GET** /submissions/{submissionId} | Get the submission.
-[**headSubmission**](docs/SubmissionsApi.md#headSubmission) | **HEAD** /submissions/{submissionId} | Same to get submission, but only response status and headers information return.
-[**updateSubmission**](docs/SubmissionsApi.md#updateSubmission) | **PUT** /submissions/{submissionId} | Fully update submission.
-[**patchSubmission**](docs/SubmissionsApi.md#patchSubmission) | **PATCH** /submissions/{submissionId} | Partially update submission.
-[**deleteSubmission**](docs/SubmissionsApi.md#deleteSubmission) | **DELETE** /submissions/{submissionId} | Delete the submission.
-[**downloadSubmission**](docs/SubmissionsApi.md#downloadSubmission) | **GET** /submissions/{submissionId}/download | Download the submission.
-[**createArtifact**](docs/SubmissionsApi.md#createArtifact) | **POST** /submissions/{submissionId}/artifacts | Create artifact for submission.
-[**listArtifacts**](docs/SubmissionsApi.md#listArtifacts) | **GET** /submissions/{submissionId}/artifacts | List artifacts of specified submission.
-[**downloadArtifact**](docs/SubmissionsApi.md#downloadArtifact) | **GET** /submissions/{submissionId}/artifacts/{artifactId}/download | Download artifact
-[**deleteArtifact**](docs/SubmissionsApi.md#deleteArtifact) | **DELETE** /submissions/{submissionId}/artifacts/{artifactId} | Delete artifact
+[**getChallengeMetadata**](docs/ChallengeRelatedApi.md#getChallengeMetadata) | **GET** /challenges/metadata | Get the challenge metadata
+[**getChallengeTypes**](docs/ChallengeRelatedApi.md#getChallengeTypes) | **GET** /challenge-types | Get the challenge types
 
 ## Authorization
 
