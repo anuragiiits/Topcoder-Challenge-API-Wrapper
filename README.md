@@ -11,7 +11,7 @@ Wrapper library for Topcoder Challenge API
     ```
 
 2. Create an instance of this wrapper with any one of the approaches listed below, depending on your use case. 
-Define `config` with `'CHALLENGE_API_URL'` and other necessary keys depending on the use cases as below:
+Define `config` with `'CHALLENGE_API_URL'` and other necessary keys depending on the use cases as below (Note that `_` is initialized with [**lodash**](https://www.npmjs.com/package/lodash) module):
 
     **M2M Authentication Configuration:**
 
