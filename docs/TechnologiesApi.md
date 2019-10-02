@@ -62,7 +62,7 @@ Name | Type | Description
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content as an Array of [**Technology**](Technology.md)
+[**Api Response**](ApiResponse.md) with metadata of [**ResponseMetadata**](ResponseMetadata.md) and content as an Array of [**Technology**](Technology.md)
 
 ### Authorization
 
@@ -138,7 +138,7 @@ Name | Type | Description
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content of [**Technology**](Technology.md)
+[**Api Response**](ApiResponse.md) with metadata of [**ResponseMetadata**](ResponseMetadata.md) and content of [**Technology**](Technology.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ Name | Type | Description
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content of [**Technology**](Technology.md)
+[**Api Response**](ApiResponse.md) with metadata of [**ResponseMetadata**](ResponseMetadata.md) and content of [**Technology**](Technology.md)
 
 ### Authorization
 
@@ -282,7 +282,7 @@ Name | Type | Description
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content as null
+[**Api Response**](ApiResponse.md) with metadata of [**ResponseMetadata**](ResponseMetadata.md) and content as null
 
 ### Authorization
 

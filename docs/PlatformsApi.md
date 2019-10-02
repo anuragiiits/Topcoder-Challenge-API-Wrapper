@@ -62,7 +62,7 @@ Name | Type | Description
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content as an Array of [**Platform**](Platform.md)
+[**Api Response**](ApiResponse.md) with metadata of [**ResponseMetadata**](ResponseMetadata.md) and content as an Array of [**Platform**](Platform.md)
 
 ### Authorization
 
@@ -133,7 +133,7 @@ Name | Type | Description
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content of [**Platform**](Platform.md)
+[**Api Response**](ApiResponse.md) with metadata of [**ResponseMetadata**](ResponseMetadata.md) and content of [**Platform**](Platform.md)
 
 ### Authorization
 
@@ -206,7 +206,7 @@ Name | Type | Description
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content of [**Platform**](Platform.md)
+[**Api Response**](ApiResponse.md) with metadata of [**ResponseMetadata**](ResponseMetadata.md) and content of [**Platform**](Platform.md)
 
 ### Authorization
 
@@ -272,7 +272,7 @@ Name | Type | Description
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content as null
+[**Api Response**](ApiResponse.md) with metadata of [**ResponseMetadata**](ResponseMetadata.md) and content as null
 
 ### Authorization
 
