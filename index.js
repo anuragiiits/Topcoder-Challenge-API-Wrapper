@@ -98,12 +98,12 @@ module.exports = (allConfig) => {
       return require('./src/TechnologiesApi').createTechnology(config, reqBody, jwt)
     },
     // Partially update technology
-    patchTechnology: (id, reqBody, jwt) => {
-      return require('./src/TechnologiesApi').patchTechnology(config, id, reqBody, jwt)
+    patchTechnology: (technologyId, reqBody, jwt) => {
+      return require('./src/TechnologiesApi').patchTechnology(config, technologyId, reqBody, jwt)
     },
     // Delete technology
-    deleteTechnology: (id, jwt) => {
-      return require('./src/TechnologiesApi').deleteTechnology(config, id, jwt)
+    deleteTechnology: (technologyId, jwt) => {
+      return require('./src/TechnologiesApi').deleteTechnology(config, technologyId, jwt)
     },
 
     // -- Platform APIs --
@@ -117,12 +117,12 @@ module.exports = (allConfig) => {
       return require('./src/PlatformsApi').createPlatform(config, reqBody, jwt)
     },
     // Partially update technology
-    patchPlatform: (id, reqBody, jwt) => {
-      return require('./src/PlatformsApi').patchPlatform(config, id, reqBody, jwt)
+    patchPlatform: (platformId, reqBody, jwt) => {
+      return require('./src/PlatformsApi').patchPlatform(config, platformId, reqBody, jwt)
     },
     // Delete technology
-    deletePlatform: (id, jwt) => {
-      return require('./src/PlatformsApi').deletePlatform(config, id, jwt)
+    deletePlatform: (platformId, jwt) => {
+      return require('./src/PlatformsApi').deletePlatform(config, platformId, jwt)
     },
 
     // -- Challenge Related APIs --

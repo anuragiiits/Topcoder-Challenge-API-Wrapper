@@ -27,26 +27,26 @@ const createTechnology = (config, reqBody, jwt = null) => {
 /**
  * Function to partially update Technology by id.
  * @param {Object} config Configuration object
- * @param {String} id the technology id
+ * @param {String} technologyId the technology id
  * @param {Object} reqBody the request body object,including type(the submission type),
  *   url(the submission url), memberId(the submitter id), challengeId(the challenge id),
  *   legacySubmissionId(the legacy submission id), legacyUploadId(the legacy upload id),
  *   submissionPhaseId(the submission phase id)
  * @returns {Promise} updated technology
  */
-const patchTechnology = (config, id, reqBody, jwt = null) => {
-  return helper.reqToV4API(config, jwt, 'PATCH', `${config.CHALLENGE_API_URL}/technologies/${id}`, reqBody)
+const patchTechnology = (config, technologyId, reqBody, jwt = null) => {
+  return helper.reqToV4API(config, jwt, 'PATCH', `${config.CHALLENGE_API_URL}/technologies/${technologyId}`, reqBody)
 }
 
 /**
  * Function to delete Technology by id.
  * @param {Object} config Configuration object
- * @param {String} id the technology id
+ * @param {String} technologyId the technology id
  * @param {String} jwt The JWT to authenticate the request
  * @returns {Promise}
  */
-const deleteTechnology = (config, id, jwt = null) => {
-  return helper.reqToV4API(config, jwt, 'DELETE', `${config.CHALLENGE_API_URL}/technologies/${id}`)
+const deleteTechnology = (config, technologyId, jwt = null) => {
+  return helper.reqToV4API(config, jwt, 'DELETE', `${config.CHALLENGE_API_URL}/technologies/${technologyId}`)
 }
 
 module.exports = {

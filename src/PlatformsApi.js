@@ -27,23 +27,23 @@ const createPlatform = (config, reqBody, jwt = null) => {
 /**
  * Function to partially update Platform by id.
  * @param {Object} config Configuration object
- * @param {String} id the platform id
+ * @param {String} platformId the platform id
  * @param {Object} reqBody the request body object, include name(platform name) property
  * @returns {Promise} updated platform
  */
-const patchPlatform = (config, id, reqBody, jwt = null) => {
-  return helper.reqToV4API(config, jwt, 'PATCH', `${config.CHALLENGE_API_URL}/platforms/${id}`, reqBody)
+const patchPlatform = (config, platformId, reqBody, jwt = null) => {
+  return helper.reqToV4API(config, jwt, 'PATCH', `${config.CHALLENGE_API_URL}/platforms/${platformId}`, reqBody)
 }
 
 /**
  * Function to delete Platform by id.
  * @param {Object} config Configuration object
- * @param {String} id the platform id
+ * @param {String} platformId the platform id
  * @param {String} jwt The JWT to authenticate the request
  * @returns {Promise}
  */
-const deletePlatform = (config, id, jwt = null) => {
-  return helper.reqToV4API(config, jwt, 'DELETE', `${config.CHALLENGE_API_URL}/platforms/${id}`)
+const deletePlatform = (config, platformId, jwt = null) => {
+  return helper.reqToV4API(config, jwt, 'DELETE', `${config.CHALLENGE_API_URL}/platforms/${platformId}`)
 }
 
 module.exports = {
