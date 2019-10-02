@@ -1,19 +1,19 @@
-# Technologies Api
+# Platforms Api
 
 All URIs are relative to **CHALLENGE_API_URL** configuration variable.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getTechnologies**](TechnologiesApi.md#getTechnologies) | **GET** /technologies | Get all the technologies.
-[**createTechnology**](TechnologiesApi.md#createTechnology) | **POST** /technologies | Create a technology.
-[**patchTechnology**](TechnologiesApi.md#patchTechnology) | **PATCH** /technologies/{technologyId} | Partially update technology.
-[**deleteTechnology**](TechnologiesApi.md#deleteTechnology) | **DELETE** /technologies/{technologyId} | Delete the technology.
+[**getPlatforms**](PlatformsApi.md#getPlatforms) | **GET** /platforms | Get all the platforms.
+[**createPlatform**](PlatformsApi.md#createPlatform) | **POST** /platforms | Create a platform.
+[**patchPlatform**](PlatformsApi.md#patchPlatform) | **PATCH** /platforms/{platformId} | Partially update platform.
+[**deletePlatform**](PlatformsApi.md#deletePlatform) | **DELETE** /platforms/{platformId} | Delete the platform.
 
-<a name="getTechnologies"></a>
-# **getTechnologies**
-> getTechnologies([, jwt])
+<a name="getPlatforms"></a>
+# **getPlatforms**
+> getPlatforms([, jwt])
 
-Get all the Technologies.
+Get all the Platforms.
 
 ### Example
 ```javascript
@@ -32,26 +32,26 @@ const challengeApiJwtMethodArgClient = challengeApi(_.pick(config,
 
 // Promise model
 challengeApiM2MClient
-  .getTechnologies()
+  .getPlatforms()
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .getTechnologies()
+  .getPlatforms()
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .getTechnologies(config.JWT)
+  .getPlatforms(config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.getTechnologies()
+await challengeApiM2MClient.getPlatforms()
 
-await challengeApiUserCredentialsClient.getTechnologies()
+await challengeApiUserCredentialsClient.getPlatforms()
 
-await challengeApiJwtMethodArgClient.getTechnologies(config.JWT)
+await challengeApiJwtMethodArgClient.getPlatforms(config.JWT)
 ```
 
 ### Parameters
@@ -62,7 +62,7 @@ Name | Type | Description
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content as an Array of [**Technology**](Technology.md)
+[**Api Response**](ApiResponse.md) with content as an Array of [**Platform**](Platform.md)
 
 ### Authorization
 
@@ -73,11 +73,11 @@ Name | Type | Description
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="createTechnology"></a>
-# **createTechnology**
-> createTechnology(reqBody[, jwt])
+<a name="createPlatform"></a>
+# **createPlatform**
+> createPlatform(reqBody[, jwt])
 
-Create a technology.
+Create a Platform.
 
 ### Example
 ```javascript
@@ -96,49 +96,44 @@ const challengeApiJwtMethodArgClient = challengeApi(_.pick(config, 'CHALLENGE_AP
 const reqBody = {
     param: {
         id: 0,
-        name: "J2EE",
-        description: "Java 2 Enterprise Edition",
-        status: {
-            id: 1,
-            description: "Active"
-        }
+        name: "Heroku",
     }
 }
 
 // Promise model
 challengeApiM2MClient
-  .createTechnology(reqBody)
+  .createPlatform(reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .createTechnology(reqBody)
+  .createPlatform(reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .createTechnology(reqBody, config.JWT)
+  .createPlatform(reqBody, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.createTechnology(reqBody)
+await challengeApiM2MClient.createPlatform(reqBody)
 
-await challengeApiUserCredentialsClient.createTechnology(reqBody)
+await challengeApiUserCredentialsClient.createPlatform(reqBody)
 
-await challengeApiJwtMethodArgClient.createTechnology(reqBody, config.JWT)
+await challengeApiJwtMethodArgClient.createPlatform(reqBody, config.JWT)
 ```
 
 ### Parameters
 
 Name | Type | Description
 ------------- | ------------- | -------------
- **reqBody** | [**requestBody**](ApiRequestBody.md)| param with value as [**Technology Object**](Technology.md)
+ **reqBody** | [**requestBody**](ApiRequestBody.md)| param with value as [**Platform Object**](Platform.md)
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content of [**Technology**](Technology.md)
+[**Api Response**](ApiResponse.md) with content of [**Platform**](Platform.md)
 
 ### Authorization
 
@@ -149,11 +144,11 @@ Name | Type | Description
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="patchTechnology"></a>
-# **patchTechnology**
-> patchTechnology(technologyId, reqBody[, jwt])
+<a name="patchPlatform"></a>
+# **patchPlatform**
+> patchPlatform(platformId, reqBody[, jwt])
 
-Update a technology.
+Update a Platform.
 
 ### Example
 ```javascript
@@ -169,54 +164,49 @@ const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
 
 const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
-const technologyId = 27141052
+const platformId = 27631255
 const reqBody = {
     param: {
-        id: 27141052,
-        name: "Hibernate",
-        description: "Hibernate for JAVA",
-        status: {
-            id: 1,
-            description: "Active"
-        }
+        id: 27631255,
+        name: "Heroku",
     }
 }
 
 // Promise model
 challengeApiM2MClient
-  .patchTechnology(technologyId, reqBody)
+  .patchPlatform(platformId, reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .patchTechnology(technologyId, reqBody)
+  .patchPlatform(platformId, reqBody)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .patchTechnology(technologyId, reqBody, config.JWT)
+  .patchPlatform(platformId, reqBody, config.JWT)
   .then(result => console.log(result.body, result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.patchTechnology(technologyId, reqBody)
+await challengeApiM2MClient.patchPlatform(platformId, reqBody)
 
-await challengeApiUserCredentialsClient.patchTechnology(technologyId, reqBody)
+await challengeApiUserCredentialsClient.patchPlatform(platformId, reqBody)
 
-await challengeApiJwtMethodArgClient.patchTechnology(technologyId, reqBody, config.JWT)
+await challengeApiJwtMethodArgClient.patchPlatform(platformId, reqBody, config.JWT)
 ```
 
 ### Parameters
 
 Name | Type | Description
 ------------- | ------------- | -------------
- **technologyId** | Number | the technology id
- **reqBody** | [**requestBody**](ApiRequestBody.md)| param with value as [**Technology Object**](Technology.md)
+ **platformId** | Number | the platform id
+ **reqBody** | [**requestBody**](ApiRequestBody.md)| param with value as [**Platform Object**](Platform.md)
  **jwt**      | String | the optional json web token
 
 ### Return type
 
-[**Api Response**](ApiResponse.md) with content of [**Technology**](Technology.md)
+[**Api Response**](ApiResponse.md) with content of [**Platform**](Platform.md)
 
 ### Authorization
 
@@ -227,11 +217,11 @@ Name | Type | Description
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="deleteTechnology"></a>
-# **deleteTechnology**
-> deleteTechnology(reviewId[, jwt])
+<a name="deletePlatform"></a>
+# **deletePlatform**
+> deletePlatform(reviewId[, jwt])
 
-Delete technology by id.
+Delete Platform by id.
 
 ### Example
 ```javascript
@@ -247,37 +237,37 @@ const challengeApiUserCredentialsClient = challengeApi(_.pick(config,
 
 const challengeApiJwtMethodArg = challengeApi(_.pick(config, 'CHALLENGE_API_URL'))
 
-const technologyId = 27141052
+const platformId = 27631255
 
 // Promise model
 challengeApiM2MClient
-  .deleteTechnology(technologyId)
+  .deletePlatform(platformId)
   .then(result => console.log(result.status))
   .catch(err => console.log(err))
 
 challengeApiUserCredentialsClient
-  .deleteTechnology(technologyId)
+  .deletePlatform(platformId)
   .then(result => console.log(result.status))
   .catch(err => console.log(err))
 
 challengeApiJwtMethodArgClient
-  .deleteTechnology(technologyId, config.JWT)
+  .deletePlatform(platformId, config.JWT)
   .then(result => console.log(result.status))
   .catch(err => console.log(err))
 
 // Async / await model
-await challengeApiM2MClient.deleteTechnology(technologyId)
+await challengeApiM2MClient.deletePlatform(platformId)
 
-await challengeApiUserCredentialsClient.deleteTechnology(technologyId)
+await challengeApiUserCredentialsClient.deletePlatform(platformId)
 
-await challengeApiJwtMethodArgClient.deleteTechnology(technologyId, config.JWT)
+await challengeApiJwtMethodArgClient.deletePlatform(platformId, config.JWT)
 ```
 
 ### Parameters
 
 Name | Type | Description
 ------------- | ------------- | -------------
- **technologyId** | Number | the technology id
+ **platformId** | Number | the platform id
  **jwt**      | String | the optional json web token
 
 ### Return type
