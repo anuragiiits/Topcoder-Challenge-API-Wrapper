@@ -10,7 +10,8 @@ Wrapper library for Topcoder Challenge API
     "topcoder-challenge-api-wrapper": "../path/to/topcoder-challenge-api-wrapper"
     ```
 
-2. Create an instance of this wrapper with any one of the approaches listed below, depending on your use case
+2. Create an instance of this wrapper with any one of the approaches listed below, depending on your use case. 
+Define `config` with `'CHALLENGE_API_URL'` and other necessary keys depending on the use cases as below:
 
     **M2M Authentication Configuration:**
 
