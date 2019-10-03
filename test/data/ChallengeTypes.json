@@ -1,0 +1,60 @@
+{
+    "id": "4da4e65e:16d808dc7f8:-52ce",
+    "result": {
+        "success": true,
+        "status": 200,
+        "metadata": null,
+        "content": [
+            {
+                "id": 29,
+                "type": "Application",
+                "name": "Copilot Posting",
+                "description": "Copilot Posting",
+                "subTrack": "COPILOT_POSTING"
+            },
+            {
+                "id": 17,
+                "type": "Studio",
+                "name": "Web Design",
+                "description": "Web Design",
+                "subTrack": "WEB_DESIGNS"
+            },
+            {
+                "id": 20,
+                "type": "Studio",
+                "name": "Logo Design",
+                "description": "Logo Design",
+                "subTrack": "LOGO_DESIGN"
+            },
+            {
+                "id": 16,
+                "type": "Studio",
+                "name": "Banners/Icons",
+                "description": "Banners/Icons",
+                "subTrack": "BANNERS_OR_ICONS"
+            },
+            {
+                "id": 32,
+                "type": "Studio",
+                "name": "Application Front-End Design",
+                "description": "Application Front-End Design",
+                "subTrack": "APPLICATION_FRONT_END_DESIGN"
+            },
+            {
+                "id": 30,
+                "type": "Studio",
+                "name": "Widget or Mobile Screen Design",
+                "description": "Widget or Mobile Screen Design",
+                "subTrack": "WIDGET_OR_MOBILE_SCREEN_DESIGN"
+            },
+            {
+                "id": 31,
+                "type": "Studio",
+                "name": "Front-End Flash",
+                "description": "Front-End Flash",
+                "subTrack": "FRONT_END_FLASH"
+            }
+        ]
+    },
+    "version": "v3"
+}

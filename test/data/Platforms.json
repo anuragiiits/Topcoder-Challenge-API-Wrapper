@@ -1,0 +1,31 @@
+{
+    "id": "4da4e65e:16d808dc7f8:-52ca",
+    "result": {
+        "success": true,
+        "status": 200,
+        "metadata": null,
+        "content": [
+            {
+                "name": "Heroku",
+                "id": 1
+            },
+            {
+                "name": "Salesforce.com",
+                "id": 2
+            },
+            {
+                "name": "Google",
+                "id": 3
+            },
+            {
+                "name": "AWS",
+                "id": 4
+            },
+            {
+                "name": "Cloud Foundry",
+                "id": 5
+            }
+        ]
+    },
+    "version": "v3"
+}

@@ -17,6 +17,11 @@
     "tc-core-library-js": "appirio-tech/tc-core-library-js.git"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "mocha-prepare": "^0.1.0",
+    "nock": "^9.4.4",
+    "nyc": "^14.1.1",
     "standard": "^14.3.1"
   }
 }

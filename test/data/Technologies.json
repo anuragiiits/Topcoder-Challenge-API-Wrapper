@@ -1,0 +1,110 @@
+{
+    "id": "4da4e65e:16d808dc7f8:-52cc",
+    "result": {
+        "success": true,
+        "status": 200,
+        "metadata": null,
+        "content": [
+            {
+                "id": 1,
+                "name": "J2EE 1",
+                "description": "Java 2 Enterprise Edition",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            },
+            {
+                "id": 2,
+                "name": "Java",
+                "description": "Java programming language",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            },
+            {
+                "id": 4,
+                "name": "EJB",
+                "description": "Enterprise Java Beans",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            },
+            {
+                "id": 5,
+                "name": "JSP",
+                "description": "Java ServerPages",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            },
+            {
+                "id": 6,
+                "name": "Servlet",
+                "description": "Java Servlet technology",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            },
+            {
+                "id": 7,
+                "name": "Applet",
+                "description": "Java Applets",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            },
+            {
+                "id": 8,
+                "name": "Java Application",
+                "description": "Java Applications",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            },
+            {
+                "id": 9,
+                "name": "JMS",
+                "description": "Java Messaging Service",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            },
+            {
+                "id": 10,
+                "name": "Web Services",
+                "description": "Web Services",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            },
+            {
+                "id": 11,
+                "name": ".NET",
+                "description": "Microsoft .NET Framework",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            },
+            {
+                "id": 12,
+                "name": "VB",
+                "description": "Microsoft Visual Basic programming language",
+                "status": {
+                    "id": 1,
+                    "description": "Active"
+                }
+            }
+        ]
+    },
+    "version": "v3"
+}
