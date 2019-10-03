@@ -12,85 +12,89 @@ module.exports = {
   '/technologies': {
     post: {
       id: td.TECHNOLOGY_ID,
-      schema: {
+      schema: joi.object().keys({
         entity: joi.object().keys({
           name: joi.string().required(),
-          description: joi.boolean().required(),
-          'status.id': joi.number().integer().required(),
-          'status.description': joi.string().required()
-        }).required()
-      }
+          description: joi.string().required(),
+          status: joi.object().keys({
+            id: joi.number().integer().required(),
+            description: joi.string().required()
+          })
+        }).required().unknown(true)
+      })
     },
     get: {
       records: Technologies,
-      schema: {
-      }
+      schema: joi.object().keys({
+      })
     }
   },
   '/technologies/:id': {
     patch: {
       idProp: 'technologyId',
-      schema: {
-        technologyId: joi.number().integer().required(),
+      schema: joi.object().keys({
+        technologyId: joi.number().integer().min(0).required(),
         entity: joi.object().keys({
-					name: joi.string().required(),
-					description: joi.boolean().required(),
-					'status.id': joi.number().integer().required(),
-					'status.description': joi.string().required()
-				}).required()
-      }
+          name: joi.string().required(),
+          description: joi.string().required(),
+          status: joi.object().keys({
+            id: joi.number().integer().required(),
+            description: joi.string().required()
+          })
+        }).required().unknown(true)
+      })
     },
     delete: {
-      idProp: 'reviewTypeId',
-      schema: {
-        reviewTypeId: joi.number().integer().required()
-      }
+      idProp: 'technologyId',
+      schema: joi.object().keys({
+        technologyId: joi.number().integer().min(0).required()
+      })
     }
-	},
-	'/platforms': {
+  },
+  '/platforms': {
     post: {
       id: td.PLATFORM_ID,
-      schema: {
+      schema: joi.object().keys({
         entity: joi.object().keys({
           name: joi.string().required()
-        }).required()
-      }
+        }).required().unknown(true)
+      })
     },
     get: {
       records: Platforms,
-      schema: {
-      }
+      schema: joi.object().keys({
+      })
     }
   },
   '/platforms/:id': {
     patch: {
       idProp: 'platformId',
-      schema: {
-        platformId: joi.number().integer().required(),
+      schema: joi.object().keys({
+        platformId: joi.number().integer().min(0).required(),
         entity: joi.object().keys({
-					name: joi.string().required()
-				}).required()
-      }
+          name: joi.string().required()
+        }).required().unknown(true)
+      })
     },
     delete: {
       idProp: 'platformId',
-      schema: {
-        platformId: joi.number().integer().required()
-      }
+      schema: joi.object().keys({
+        platformId: joi.number().integer().min(0).required()
+      })
     }
-	},
-	'/challenges/metadata': {
+  },
+  '/challenges/metadata': {
     get: {
       records: ChallengeMetadata,
-      schema: {
-      }
+      schema: joi.object().keys({
+      })
     }
-	},
-	'/challenge-types': {
+  },
+  '/challenge-types': {
     get: {
       records: ChallengeTypes,
-      schema: {
-      }
+      schema: joi.object().keys({
+      })
     }
   }
 }

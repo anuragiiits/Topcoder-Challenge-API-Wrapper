@@ -2,18 +2,10 @@
  * Setting up Mock for unit tests
  */
 
-require('./common/bootstrap')
-
-const _ = require('lodash')
-const fs = require('fs')
-const path = require('path')
 const nock = require('nock')
-const joi = require('@hapi/joi')
 const prepare = require('mocha-prepare')
 const th = require('./common/testHelper')
 const td = require('./common/testData')
-const Reviews = require('./data/Reviews.json')
-const ReviewSummations = require('./data/ReviewSummations.json')
 const store = require('./common/store')
 
 const AUTH_PATH = td.AUTH_PATH
@@ -41,36 +33,36 @@ prepare(function (done) {
     })
     .post(AUTH_PATH)
     .reply((_uri, requestBody) => {
-      if (requestBody['client_id'] === 'invalid') {
+      if (requestBody.client_id === 'invalid' || requestBody.password === 'invalid') {
         return [404, {
           message: 'Unknown Error'
         }]
       } else {
         return [200, {
-          'access_token': td.M2M_TOKEN,
-          'scope': 'all:challenges read:challenges write:challenges read:groups read:project read:bus_topics write:bus_api read:user_profiles read:project-user read:project-permission',
-          'expires_in': 864000,
-          'token_type': 'Bearer'
+          access_token: td.M2M_TOKEN,
+          scope: 'all:challenges read:challenges write:challenges read:groups read:project read:bus_topics write:bus_api read:user_profiles read:project-user read:project-permission',
+          expires_in: 864000,
+          token_type: 'Bearer'
         }]
       }
     })
     .post(AUTHN_PATH)
     .reply((_uri, requestBody) => {
-      if (requestBody.password === 'invalid') {
-        return [401, {
+      if (requestBody.client_id === 'invalid' || requestBody.password === 'invalid') {
+        return [404, {
           message: 'Unknown Error'
         }]
       }
       return [200, {
-        'id_token': AUTHN_ID_TOKEN,
-        'refresh_token': AUTHN_REFRESH_TOKEN,
-        'access_token': AUTHN_ACCESS_TOKEN,
-        'token_type': AUTHN_TOKEN_TYPE
+        id_token: AUTHN_ID_TOKEN,
+        refresh_token: AUTHN_REFRESH_TOKEN,
+        access_token: AUTHN_ACCESS_TOKEN,
+        token_type: AUTHN_TOKEN_TYPE
       }]
     })
     .post(AUTHZ_PATH)
-    .reply(() => [ 200, { result: { content: { token: AUTHZ_TOKEN } } } ])
-    .post(`/technologies`)
+    .reply(() => [200, { result: { content: { token: AUTHZ_TOKEN } } }])
+    .post('/technologies')
     .reply(function (uri, body) {
       const result = th.create({
         uri,
@@ -82,8 +74,7 @@ prepare(function (done) {
       }
       return result
     })
-    .get(`/technologies`)
-    // .query(true)
+    .get('/technologies')
     .reply(function (uri) {
       return th.get({
         uri,
@@ -93,7 +84,7 @@ prepare(function (done) {
     .patch(/\/technologies\/.*/)
     .query(true)
     .reply(function (uri, body) {
-      const result = th.put({
+      const result = th.patch({
         uri,
         method: this.method.toLowerCase(),
         obj: store.technologyData,
@@ -119,20 +110,19 @@ prepare(function (done) {
       }
       return result
     })
-    .post(`/platforms`)
+    .post('/platforms')
     .reply(function (uri, body) {
       const result = th.create({
         uri,
         method: this.method.toLowerCase(),
-        body,
-        needUser: true
+        body
       })
       if (result[0] === td.CREATE_SUCCESS_STATUS) {
         store.platformData = result[1]
       }
       return result
     })
-    .get(`/platforms`)
+    .get('/platforms')
     .reply(function (uri) {
       return th.get({
         uri,
@@ -142,12 +132,11 @@ prepare(function (done) {
     .patch(/\/platforms\/.*/)
     .query(true)
     .reply(function (uri, body) {
-      const result = th.put({
+      const result = th.patch({
         uri,
         method: this.method.toLowerCase(),
         obj: store.platformData,
         body,
-        needUser: true,
         notFound: td.NotFoundError.Platform
       })
       if (result[0] === td.SUCCESS_STATUS) {
@@ -169,14 +158,14 @@ prepare(function (done) {
       }
       return result
     })
-    .get(`/challenges/metadata`)
+    .get('/challenges/metadata')
     .reply(function (uri) {
       return th.get({
         uri,
         method: this.method.toLowerCase()
       })
     })
-    .get(`/challenge-types`)
+    .get('/challenge-types')
     .reply(function (uri) {
       return th.get({
         uri,

@@ -13,7 +13,7 @@ const m2mDesc = {
   name: 'M2M',
   schemaType: '[M2M Configuration]',
   config: _.pick(m2mConfig, ['AUTH0_URL', 'AUTH0_AUDIENCE', 'TOKEN_CACHE_TIME',
-    'AUTH0_CLIENT_ID', 'AUTH0_CLIENT_SECRET', 'CHALLENGE_API_URL', 'AUTH0_PROXY_SERVER_URL' ]),
+    'AUTH0_CLIENT_ID', 'AUTH0_CLIENT_SECRET', 'CHALLENGE_API_URL', 'AUTH0_PROXY_SERVER_URL']),
   uriFields: ['AUTH0_URL', 'AUTH0_AUDIENCE', 'CHALLENGE_API_URL'],
   stringFields: ['AUTH0_CLIENT_ID', 'AUTH0_CLIENT_SECRET', 'AUTH0_PROXY_SERVER_URL'],
   intervalFields: ['TOKEN_CACHE_TIME']
@@ -65,7 +65,7 @@ for (const c of [m2mDesc, userDesc, jwtDesc]) {
           api(cfg)
           throw new Error('should not throw error here')
         } catch (err) {
-          should.not.equal(err.message, `should not throw error here`)
+          should.not.equal(err.message, 'should not throw error here')
         }
       })
     }

@@ -113,7 +113,7 @@ The wrapper internally generates the JWT token based on the method used when ini
 
 ## Running tests
 
-Following environment variables need to be set up before running the tests
+Following environment variables need to be set up before running the tests (or directly run the `npm run test` command to use the `.env` file provided)
 
 ```bash
 - TEST_AUTH0_URL
@@ -143,3 +143,5 @@ To run tests with coverage report, execute the command
 ```bash
 npm run cov
 ```
+
+Note: Only for the purpose of this contest (to run the tests without any configuration), I have given TEST values in `.env` file.

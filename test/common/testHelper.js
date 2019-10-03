@@ -2,7 +2,6 @@
  * Test common function.
  */
 const _ = require('lodash')
-const joi = require('@hapi/joi')
 const td = require('./testData')
 const routes = require('./routes')
 
@@ -73,12 +72,9 @@ const create = (param) => {
   checkRoute(param)
   const route = findRoute(param)
   const joiParam = {}
-  joiParam['entity'] = param.body
+  joiParam.entity = param.body.param
+  const result = route.schema.validate(joiParam)
 
-  if (param.needUser) {
-    joiParam['authUser'] = td.M2M_USER
-  }
-  const result = joi.validate(joiParam, route.schema)
   if (result.error) {
     return [td.JOI_FAIL_STATUS, { message: result.error.details[0].message }]
   }
@@ -86,10 +82,7 @@ const create = (param) => {
   if (_.isArray(route.id)) {
     id = route.id.pop()
   }
-  let init = {}
-//   if (param.isSubmission) {
-//     init = { url: 'http://test' }
-//   }
+  const init = {}
   return [td.CREATE_SUCCESS_STATUS, _.assign(init, param.body, { id })]
 }
 
@@ -102,60 +95,8 @@ const get = (param) => {
   setPath(param)
   checkRoute(param)
   const route = findRoute(param)
-//   const qs = param.uri.substring(`${td.API_VERSION}${param.path}?`.length)
-//   const query = q.parse(qs)
-//   const result = joi.validate({ query }, route.schema)
-//   if (result.error) {
-//     return [td.JOI_FAIL_STATUS, { message: result.error.details[0].message }]
-//   }
-//   const queryFilter = _.omit(query, 'page', 'perPage')
-//   const filters = _.filter(route.records, item => {
-//     let ok = true
-//     _.each(queryFilter, (value, key) => {
-//       if (String(value) !== String(item[key])) {
-//         ok = false
-//       }
-//     })
-//     return true
-//   })
-//   const pagination = {}
-//   pagination.page = _.get(query, 'page') || config.PAGE
-//   pagination.perPage = _.get(query, 'perPage') || config.PER_PAGE
-//   pagination.total = filters.length
-//   const header = resHeaders(pagination)
-//   const results = filters.slice((pagination.page - 1) * pagination.perPage, pagination.page * pagination.perPage)
-//   return param.isHead ? [td.SUCCESS_STATUS, null, header] : [td.SUCCESS_STATUS, results, header]
   return [td.SUCCESS_STATUS, route.records]
 }
-
-/**
- * Mock get for api
- * @param {Object} param the get params
- * @return {Array} the get result for nock
- */
-// const get = (param) => {
-//   setPath(param)
-//   const routeParam = parsePathParam(param)
-//   checkRoute(routeParam)
-//   const route = findRoute(routeParam)
-//   const joiParam = { [route.idProp]: routeParam.id }
-//   if (routeParam.needUser) {
-//     joiParam['authUser'] = td.M2M_USER
-//   }
-//   const result = joi.validate(joiParam, route.schema)
-//   const notFoundId = routeParam.notFoundId || td.NOT_FOUND_ID
-//   if (routeParam.id === notFoundId) {
-//     return [td.NOT_FOUND_STATUS, { message: routeParam.notFound }]
-//   }
-//   if (result.error) {
-//     return [td.JOI_FAIL_STATUS, { message: result.error.details[0].message }]
-//   }
-//   let obj = routeParam.obj
-// //   if (routeParam.isSubmission) {
-// //     obj = routeParam.obj[routeParam.id]
-// //   }
-//   return [td.SUCCESS_STATUS, obj]
-// }
 
 /**
  * Mock put for api
@@ -167,11 +108,8 @@ const put = (param) => {
   const routeParam = parsePathParam(param)
   checkRoute(routeParam)
   const route = findRoute(routeParam)
-  const joiParam = { [route.idProp]: routeParam.id, entity: routeParam.body }
-  if (routeParam.needUser) {
-    joiParam['authUser'] = td.M2M_USER
-  }
-  const result = joi.validate(joiParam, route.schema)
+  const joiParam = { [route.idProp]: routeParam.id, entity: routeParam.body.param }
+  const result = route.schema.validate(joiParam)
   if (result.error) {
     return [td.JOI_FAIL_STATUS, { message: result.error.details[0].message }]
   }
@@ -179,10 +117,7 @@ const put = (param) => {
   if (routeParam.id === notFoundId) {
     return [td.NOT_FOUND_STATUS, { message: routeParam.notFound }]
   }
-  let obj = routeParam.obj
-  // if (param.isSubmission) {
-  //   obj = routeParam.obj[routeParam.id]
-  // }
+  const obj = routeParam.obj
   return [td.SUCCESS_STATUS, _.assign({}, obj, routeParam.body)]
 }
 
@@ -205,7 +140,7 @@ const remove = (param) => {
   const routeParam = parsePathParam(param)
   checkRoute(routeParam)
   const route = findRoute(routeParam)
-  const result = joi.validate({ [route.idProp]: routeParam.id }, route.schema)
+  const result = route.schema.validate({ [route.idProp]: routeParam.id })
   if (result.error) {
     return [td.JOI_FAIL_STATUS, { message: result.error.details[0].message }]
   }
@@ -216,83 +151,8 @@ const remove = (param) => {
   if (!routeParam.obj) {
     return [td.NOT_FOUND_STATUS, { message: td.NotFoundError.ReviewType }]
   }
-  // let id = null
-  // if (routeParam.isSubmission) {
-  //   id = routeParam.id
-  // }
-  return [td.DELETE_SUCCESS_STATUS, null]
+  return [td.SUCCESS_STATUS, null]
 }
-
-/**
- * Parse multi part form data
- * @param {Object} body the multi part content
- * @param {String} contentType the content type
- * @return {Object} the parsed result
- */
-// const multiPartParse = (body, contentType) => {
-//   const m = contentType.match(/boundary=(?:"([^"]+)"|([^;]+))/i)
-//   if (!m) {
-//     throw new Error('Bad content-type header, no multipart boundary')
-//   }
-//   let boundary = m[1] || m[2]
-
-//   // Ex.
-//   // Content-Disposition: form-data; name="url"
-//   //
-//   // https://tc-test-submission-scan.s3.amazonaws.com/good.zip
-//   // Content-Disposition: form-data; name="submission"; filename="fileToUpload.zip"
-//   const headerParse = (header) => {
-//     const headerFields = {}
-//     const matchResult = header.match(/^.*name="([^"]*)"$/)
-//     if (matchResult) {
-//       headerFields.name = matchResult[1]
-//     }
-//     return headerFields
-//   }
-
-//   const fileParse = (header) => {
-//     const headerFields = {}
-//     const matchResult = header.match(/^.*filename="([^"]*)"$/)
-//     if (matchResult) {
-//       headerFields.name = matchResult[1]
-//     }
-//     return headerFields
-//   }
-
-//   // \r\n is part of the boundary.
-//   boundary = '\r\n--' + boundary
-
-//   // Prepend what has been stripped by the body parsing mechanism.
-//   const sBody = '\r\n' + body
-//   const parts = sBody.split(new RegExp(boundary))
-//   const partsByName = {}
-//   let fieldName
-//   // First part is a preamble, last part is closing '--'
-//   for (let i = 1; i < parts.length - 1; i++) {
-//     const subparts = parts[i].split('\r\n\r\n')
-//     const headers = subparts[0].split('\r\n')
-//     for (let j = 1; j < headers.length; j++) {
-//       const fileFields = fileParse(headers[j])
-//       if (fileFields.name) {
-//         fieldName = 'files'
-//         partsByName['fileType'] = fileFields.name.split('.').pop()
-//       } else {
-//         const headerFields = headerParse(headers[j])
-//         if (headerFields.name) {
-//           fieldName = headerFields.name
-//         }
-//       }
-//     }
-//     partsByName[fieldName] = subparts[1]
-//     if (/^[0-9]+.?[0-9]*$/.test(subparts[1])) {
-//       partsByName[fieldName] = _.toNumber(subparts[1])
-//     }
-//   }
-//   if (partsByName.url) {
-//     partsByName['fileType'] = partsByName.url.split('.').pop()
-//   }
-//   return partsByName
-// }
 
 /**
  * Make client that invokes the Wrapper methods with JWT argument
@@ -308,7 +168,6 @@ module.exports = {
   findRoute,
   create,
   get,
-  put,
   patch,
   remove,
   makeJwtClient
